@@ -1,0 +1,34 @@
+<title>demo with traffic lights inside on dashboard</title>
+<body>
+<table>
+<tr>
+<td>Traffic Light Indicator:</td>
+<td><img id="traffic-light-indicator" src="file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/cars/wheel.png"/></td>
+<td>Engine Alerts:</td>
+<td><img id="engine-alert" src="file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/cars/vehicle.png"/></td>
+<td>Wheel Alerts:</td>
+<td><img id="wheel-alert" src="file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/cars/wheel.png"/></td>
+</table>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var trafficLightIndicator = document.getElementById("traffic-light-indicator");
+trafficLightIndicator.src = "file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/traffic-controlling/red.png";
+});
+//more on the developments here https://www.google.com/search?q=canbus+adapter&oq=canbus&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDQ2ODlqMGo3qAIAsAIA&client=ubuntu-chr&sourceid=chrome&ie=UTF-8
+//timed loop: Red for ten seconds, then yellow a second, then green for ten seconds, then yellow for one second and back to start on the red
+setInterval(function() {
+  var trafficLightIndicator = document.getElementById("traffic-light-indicator");
+  trafficLightIndicator.src = "file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/traffic-controlling/red.png";
+  setTimeout(function() {
+    trafficLightIndicator.src = "file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/traffic-controlling/yellow.png";
+    setTimeout(function() {
+      trafficLightIndicator.src = "file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/traffic-controlling/green.png";
+      setTimeout(function() {
+        trafficLightIndicator.src = "file:///home/pan100/EN-GLOB/Articles/png-example-drawed-icons/traffic-controlling/yellow.png";
+      }, 10000); // Green for 10 seconds
+    }, 1000); // Yellow for 1 second
+  }, 10000); // Red for 10 seconds
+}, 22000); // Total cycle time
+
+</script>
